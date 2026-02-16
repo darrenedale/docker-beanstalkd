@@ -9,13 +9,13 @@ on:
 jobs:
   build-latest:
     runs-on: ubuntu-latest
-      steps:
-        - name: Checkout source
-          uses: actions/checkout@v4
+    steps:
+    - name: Checkout source
+        uses: actions/checkout@v4
 
-        - name: Build image
-          run: docker buildx build -t "darrenedale/beanstalkd:latest" .
+    - name: Build image
+        run: docker buildx build -t "darrenedale/beanstalkd:latest" .
 
-        - name: Push tag
-          docker login -u ${{ secrets.DOCKERUSERNAME }} -p ${{ secrets.DOCKERTOKEN }}
-          docker push "darrenedale/beanstalkd:latest"
+    - name: Push tag
+        docker login -u ${{ secrets.DOCKERUSERNAME }} -p ${{ secrets.DOCKERTOKEN }}
+        docker push "darrenedale/beanstalkd:latest"
