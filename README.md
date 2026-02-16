@@ -2,9 +2,9 @@
 
 ## Build an image with the latest beanstalkd:
 
-    docker build .
+    docker buildx build .
 
 ## Build an image with a specific beanstalkd version:
 
-    docker build --build-arg BEANSTALKD_VERSION=<tag> .
+    docker buildx build --build-arg BEANSTALKD_VERSION=<tag> .
 
