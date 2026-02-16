@@ -11,11 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout source
-        uses: actions/checkout@v4
+      uses: actions/checkout@v4
 
     - name: Build image
-        run: docker buildx build -t "darrenedale/beanstalkd:latest" .
+      run: docker buildx build -t "darrenedale/beanstalkd:latest" .
 
     - name: Push tag
+      run: |
         docker login -u ${{ secrets.DOCKERUSERNAME }} -p ${{ secrets.DOCKERTOKEN }}
         docker push "darrenedale/beanstalkd:latest"
