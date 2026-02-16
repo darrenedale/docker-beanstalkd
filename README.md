@@ -1,10 +1,11 @@
 # Docker image builder for beanstalkd
 
+Compatible with beanstalkd v1.10 and later.
+
 ## Build an image with the latest beanstalkd:
 
-    docker buildx build .
+    docker buildx build --tag "darrenedale/beanstalkd:latest" .
 
-## Build an image with a specific beanstalkd version:
+## Build an image with a specific beanstalkd version (e.g. 1.11):
 
-    docker buildx build --build-arg BEANSTALKD_VERSION=<tag> .
-
+    docker buildx build --tag "darrenedale/beanstalkd:1.11" --build-arg BEANSTALKD_VERSION=1.11 .
