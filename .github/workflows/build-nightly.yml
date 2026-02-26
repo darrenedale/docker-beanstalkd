@@ -1,4 +1,4 @@
-name: Build Latest
+name: Build Nightly
 
 on:
   schedule:
