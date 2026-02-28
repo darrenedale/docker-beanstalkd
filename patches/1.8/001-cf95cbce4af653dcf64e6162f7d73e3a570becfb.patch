@@ -1,0 +1,29 @@
+From cf95cbce4af653dcf64e6162f7d73e3a570becfb Mon Sep 17 00:00:00 2001
+From: Philip Prindeville <philipp@redfish-solutions.com>
+Date: Thu, 16 Feb 2017 19:24:39 -0700
+Subject: [PATCH] Fix headers for MUSL compatibility
+
+The MUSL headers generally don't like being included as <sys/foo.h>
+when the preferred means is <foo.h> (example: time.h) and will
+complain loudly when this happens.  It's unnecessary noise, and it
+potentially draws attention from real warnings that might otherwise
+be overlooked.
+
+Signed-off-by: Philip Prindeville <philipp@redfish-solutions.com>
+---
+ sd-daemon.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sd-daemon.c b/sd-daemon.c
+index 9c23b917..8596961f 100644
+--- a/sd-daemon.c
++++ b/sd-daemon.c
+@@ -32,7 +32,7 @@
+ #include <sys/stat.h>
+ #include <sys/socket.h>
+ #include <sys/un.h>
+-#include <sys/fcntl.h>
++#include <fcntl.h>
+ #include <netinet/in.h>
+ #include <stdlib.h>
+ #include <errno.h>
