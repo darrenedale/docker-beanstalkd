@@ -1,6 +1,6 @@
 # Docker image builder for beanstalkd
 
-Compatible with beanstalkd v1.10 and later.
+Compatible with beanstalkd v1.8 and later.
 
 ## Build an image with the latest beanstalkd:
 
