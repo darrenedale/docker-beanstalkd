@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:latest AS build
 LABEL authors="Darren Edale"
 ARG BEANSTALKD_VERSION
 
@@ -10,4 +10,7 @@ RUN rm -rf /patches
 RUN cd /beanstalkd && make && install -m 755 /beanstalkd/beanstalkd /usr/local/bin/ && rm -rf /beanstalkd
 RUN apk del git build-base patch
 RUN mkdir -p /var/lib/beanstalkd/binlog
-ENTRYPOINT ["beanstalkd", "-b", "/var/lib/beanstalkd/binlog"]
+
+FROM scratch
+COPY --from=build / /
+ENTRYPOINT ["/usr/local/bin/beanstalkd", "-b", "/var/lib/beanstalkd/binlog"]
